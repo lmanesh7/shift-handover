@@ -106,8 +106,8 @@ if file is not None:
         filename = "df"
 
         # Load selected file
-        with open(filename, 'rb') as f:
-            s = f.read()
+       # with open(filename, 'rb') as f:
+         #   s = f.read()
 
         download_button_str = download_button(s, filename, f'Click here to download {filename}')
         st.markdown(download_button_str, unsafe_allow_html=True)
