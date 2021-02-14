@@ -103,7 +103,7 @@ if file is not None:
 
         # Upload file for testing
         folder_path = st.text_input('Enter directory: default .', '.')
-        filename = file_selector(folder_path=folder_path)
+        filename = "processed file.csv"
 
         # Load selected file
         with open(filename, 'rb') as f:
