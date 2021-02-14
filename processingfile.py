@@ -7,36 +7,24 @@ import re
 
 
 import pandas as pd 
-import streamlit as st
-def download_button(object_to_download, download_filename, button_text, pickle_it=False):
+def download_link(object_to_download, download_filename, download_link_text):
+    """
+    Generates a link to download the given object_to_download.
 
-    if pickle_it:
-        try:
-            object_to_download = pickle.dumps(object_to_download)
-        except pickle.PicklingError as e:
-            st.write(e)
-            return None
+    object_to_download (str, pd.DataFrame):  The object to be downloaded.
+    download_filename (str): filename and extension of file. e.g. mydata.csv, some_txt_output.txt
+    download_link_text (str): Text to display for download link.
 
-    else:
-        if isinstance(object_to_download, bytes):
-            pass
+    Examples:
+    download_link(YOUR_DF, 'YOUR_DF.csv', 'Click here to download data!')
+    download_link(YOUR_STRING, 'YOUR_STRING.txt', 'Click here to download your text!')
 
-        elif isinstance(object_to_download, pd.DataFrame):
-            object_to_download = object_to_download.to_csv(index=False)
+    """
+    if isinstance(object_to_download,pd.DataFrame):
+        object_to_download = object_to_download.to_csv(index=False)
 
-        # Try JSON encode for everything else
-        else:
-            object_to_download = json.dumps(object_to_download)
-
-    try:
-        # some strings <-> bytes conversions necessary here
-        b64 = base64.b64encode(object_to_download.encode()).decode()
-
-    except AttributeError as e:
-        b64 = base64.b64encode(object_to_download).decode()
-
-    button_uuid = str(uuid.uuid4()).replace('-', '')
-    button_id = re.sub('\d+', '', button_uuid)
+    # some strings <-> bytes conversions necessary here
+    b64 = base64.b64encode(object_to_download.encode()).decode()
 
     custom_css = f""" 
         <style>
@@ -109,7 +97,8 @@ if file is not None:
         with open(filename, 'rb') as f:
             s = f.read()
        
-        download_button_str = download_button(s, filename, f'Click here to download {filename}')
+        #download_button_str = download_button(s, filename, f'Click here to download {filename}')
+        download_button_str = download_link(df,filename,f'Click here to download {filename}')
         st.markdown(download_button_str, unsafe_allow_html=True)
 
     
