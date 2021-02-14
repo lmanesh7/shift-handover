@@ -25,7 +25,8 @@ def download_link(object_to_download, download_filename, download_link_text):
 
     # some strings <-> bytes conversions necessary here
     b64 = base64.b64encode(object_to_download.encode()).decode()
-
+    button_uuid = str(uuid.uuid4()).replace('-', '')
+    button_id = re.sub('\d+', '', button_uuid)
     custom_css = f""" 
         <style>
             #{button_id} {{
