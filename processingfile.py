@@ -53,7 +53,7 @@ def download_link(object_to_download, download_filename, download_link_text):
                 }}
         </style> """
 
-    dl_link = custom_css + f'<a download="{download_filename}" id="{button_id}" href="data:file/txt;base64,{b64}">{button_text}</a><br></br>'
+    dl_link = custom_css + f'<a download="{download_filename}" id="{button_id}" href="data:file/txt;base64,{b64}">{download_link_text}</a><br></br>'
 
     return dl_link
       
