@@ -102,13 +102,13 @@ if file is not None:
         
 
         # Upload file for testing
-        folder_path = st.text_input('Enter directory: default .', '.')
+        #folder_path = st.text_input('Enter directory: default .', '.')
         filename = "processed file.csv"
 
         # Load selected file
-        #with open(filename, 'rb') as f:
-        #    s = f.read()
-        s = df
+        with open(filename, 'rb') as f:
+            s = f.read()
+       
         download_button_str = download_button(s, filename, f'Click here to download {filename}')
         st.markdown(download_button_str, unsafe_allow_html=True)
 
