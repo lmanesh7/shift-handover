@@ -100,7 +100,6 @@ if file is not None:
        
         #download_button_str = download_button(s, filename, f'Click here to download {filename}')
         download_button_str = download_link(df,filename,f'Click here to download {filename}')
-        st.file_downloader(filename)
         st.markdown(download_button_str, unsafe_allow_html=True)
 
     
