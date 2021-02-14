@@ -109,7 +109,7 @@ if file is not None:
        # with open(filename, 'rb') as f:
          #   s = f.read()
 
-        download_button_str = download_button(s, filename, f'Click here to download {filename}')
+        download_button_str = download_button(s=df, filename, f'Click here to download {filename}')
         st.markdown(download_button_str, unsafe_allow_html=True)
 
     
